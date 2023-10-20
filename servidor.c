@@ -50,6 +50,8 @@ int main(int argc, char *argv[]) {
         // Clean buffers
         memset(&server_message, '\0', sizeof(server_message));
         memset(&client_message, '\0', sizeof(client_message));
+        server_message.index = 0;
+        server_message.data = 1;
         
         // Receive message from client
         if(recvfrom(socket_desc, &client_message, sizeof(client_message), 0, (struct sockaddr *)&client_addr, &client_struct_length) < 0){
@@ -69,8 +71,6 @@ int main(int argc, char *argv[]) {
             
             // Send message to client
             for (;;) {
-                server_message.index = client_message.index;
-                server_message.data = client_message.data * 2;
                 if(sendto(socket_desc, &server_message, sizeof(server_message), 0, (struct sockaddr *)&client_addr, client_struct_length) < 0){
                     printf("Error while sending message\n");
                     exit(1);
@@ -78,6 +78,8 @@ int main(int argc, char *argv[]) {
                 printf("Sent message to client: index=%d, data=%d\n", server_message.index, server_message.data);
                 // Wait for delay seconds
                 sleep(delay);
+                server_message.index++;
+                server_message.data *= 2;
             }
             
             // Exit child process

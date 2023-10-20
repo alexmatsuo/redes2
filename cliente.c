@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     
     printf("Message sent successfully\n");
     // Receive the server's response:
-    for (int i = 1; i < 7; i++) {
+    for (;;) {
 
         if(recvfrom(socket_desc, &server_message, sizeof(server_message), 0,
             (struct sockaddr*)&server_addr, &server_struct_length) < 0){
