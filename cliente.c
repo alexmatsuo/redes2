@@ -1,18 +1,20 @@
-#include <stdio.h>
-#include <string.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct Message{
     int index;
     int data;
 } Message;
 
-int main(void){
-    int socket_desc;
+int main(int argc, char *argv[]) {
+    int socket_desc, server_struct_length, read_size;
     struct sockaddr_in server_addr;
     Message server_message, client_message;
-    int server_struct_length = sizeof(server_addr);
+    server_struct_length = sizeof(server_addr);
     
     // Clean buffers:
     memset(&server_message, '\0', sizeof(server_message));
@@ -29,7 +31,7 @@ int main(void){
     
     // Set port and IP:
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(2000);
+    server_addr.sin_port = htons(8888);
     server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     
@@ -42,6 +44,7 @@ int main(void){
         return -1;
     }
     
+    printf("Message sent successfully\n");
     // Receive the server's response:
     for (int i = 1; i < 7; i++) {
 
@@ -50,13 +53,9 @@ int main(void){
             printf("Error while receiving server's msg\n");
             return -1;
         }
-    
-        printf("Server's response: %d\n", server_message.data);
+        
+        printf("Received message from server: index=%d, data=%d\n", server_message.index, server_message.data);
     }
-    
-    // Close the socket:
-    close(socket_desc);
     
     return 0;
 }
-

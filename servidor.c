@@ -1,86 +1,89 @@
-#include <stdio.h>
-#include <string.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct Message{
     int index;
     int data;
 } Message;
 
-int main( int argc, char *argv []){
-    int socket_desc;
-    int delay;
-    for(int i=0; i < argc;i++){
-        if(argv == '-t'){
-            delay = argv[i+1];
-        }
-    }
+int main(int argc, char *argv[]) {
+    int socket_desc, client_sock, c, read_size;
     struct sockaddr_in server_addr, client_addr;
     Message server_message, client_message;
     int client_struct_length = sizeof(client_addr);
     int server_struct_length = sizeof(server_addr);
-    // Clean buffers:
-    memset(&server_message, '\0', sizeof(server_message));
-    memset(&client_message, '\0', sizeof(client_message));
+    int delay = 0;
     
-    // Create UDP socket:
+    // Parse command line arguments
+    for(int i = 0; i < argc; i++){
+        if(strcmp(argv[i], "-t") == 0){
+            delay = atoi(argv[i+1]);
+        }
+    }
+    
+    // Create UDP socket
     socket_desc = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-    
     if(socket_desc < 0){
         printf("Error while creating socket\n");
         return -1;
     }
     printf("Socket created successfully\n");
     
-    // Set port and IP:
+    // Set port and IP
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(2000);
-    server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server_addr.sin_addr.s_addr = INADDR_ANY;
+    server_addr.sin_port = htons(8888);
     
-    // Bind to the set port and IP:
-    if(bind(socket_desc, (struct sockaddr*)&server_addr, sizeof(server_addr)) < 0){
-        printf("Couldn't bind to the port\n");
+    // Bind socket to address
+    if(bind(socket_desc, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0){
+        printf("Error while binding socket\n");
         return -1;
     }
-    printf("Done with binding\n");
+    printf("Socket bound successfully\n");
     
-    printf("Listening for incoming messages...\n\n");
-
-    // Recieve message from client to get address
-    if (recvfrom(socket_desc, &client_message, sizeof(client_message), 0,
-         (struct sockaddr*)&client_addr, &client_struct_length) < 0){
-        printf("Couldn't receive\n");
-        return -1;
-    }
-    printf("Received message from IP: %s and port: %i\n",
-           inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
-    
-    printf("Msg from client: %d\n", client_message.data);
-    
-    // Send message to clients :
-    int j = 0;
-    for(int i = 1; i < 33 ; i*=2,j++){
-        server_message.index = j;
-        server_message.data = i;
-        if  (sendto(socket_desc, &server_message, sizeof(server_message), 0, (struct sockaddr*)&client_addr, client_struct_length) < 0){
-            printf("Unable to send message\n");
-            return -1;
+    // Listen for incoming connections
+    while(1){
+        // Clean buffers
+        memset(&server_message, '\0', sizeof(server_message));
+        memset(&client_message, '\0', sizeof(client_message));
+        
+        // Receive message from client
+        if(recvfrom(socket_desc, &client_message, sizeof(client_message), 0, (struct sockaddr *)&client_addr, &client_struct_length) < 0){
+            printf("Error while receiving message\n");
+            continue;
         }
-        printf("Sending %d to client\n", server_message.data);
+        printf("Received message from client: index=%d, data=%d\n", client_message.index, client_message.data);
+        
+        // Fork a new process to handle the client
+        pid_t pid = fork();
+        if(pid < 0){
+            printf("Error while forking process\n");
+            continue;
+        }
+        if(pid == 0){
+            // Child process
+            
+            // Send message to client
+            for (;;) {
+                server_message.index = client_message.index;
+                server_message.data = client_message.data * 2;
+                if(sendto(socket_desc, &server_message, sizeof(server_message), 0, (struct sockaddr *)&client_addr, client_struct_length) < 0){
+                    printf("Error while sending message\n");
+                    exit(1);
+                }
+                printf("Sent message to client: index=%d, data=%d\n", server_message.index, server_message.data);
+                // Wait for delay seconds
+                sleep(delay);
+            }
+            
+            // Exit child process
+            exit(0);
+        }
     }
-    
-    // Respond to client:
-    server_message.data = client_message.data;
-    
-    if (sendto(socket_desc, &server_message, sizeof(server_message), 0,
-         (struct sockaddr*)&client_addr, client_struct_length) < 0){
-        printf("Can't send\n");
-        return -1;
-    }
-    
-    // Close the socket:
-    close(socket_desc);
     
     return 0;
 }
