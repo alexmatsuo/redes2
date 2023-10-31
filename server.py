@@ -1,7 +1,7 @@
 import socket
 import time
 import sys
-import pickle  # For serialization
+import pickle 
 
 localIP = "127.0.0.1"
 localPort = 8888
@@ -18,6 +18,7 @@ class Packet:
         self.data = data
 
 packet = Packet(index=0, data=1)
+message = 0
 delay = 1  # Default delay
 
 if len(sys.argv) > 1:
@@ -25,13 +26,16 @@ if len(sys.argv) > 1:
 
 while True:
     # Serialize the packet object to bytes using pickle
-    serialized_packet = pickle.dumps(packet)
+    # serialized_packet = pickle.dumps(packet)
 
     # Broadcast message to all clients
-    UDPServerSocket.sendto(serialized_packet, (localIP, localPort))
+    # UDPServerSocket.sendto(serialized_packet, (localIP, localPort))
+    bytessend = bin(message)
+    UDPServerSocket.sendto(bytessend, (localIP, localPort))
 
     print(f"Index - {packet.index}, Data - {packet.data}")
     packet.index += 1
     packet.data += 1
+    message += 1
 
     time.sleep(delay)

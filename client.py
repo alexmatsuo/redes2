@@ -1,28 +1,53 @@
 import socket
+import pickle
 
-serverAddressPort = ("127.0.0.1", 20001)  # Server address and port broadcasting
+# localIP = "127.0.0.1"
+# localPort = 8888
 bufferSize = 1024
+serverAddressPort   = ("127.0.0.1", 8888)
 
-received_numbers = []  # List to store received sequence numbers
+msgFromClient = "Hello UDP Server"
+bytesToSend = str.encode(msgFromClient)
 
 UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
-UDPClientSocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-UDPClientSocket.bind(("0.0.0.0", 20002))  # Listen on the same port the server is broadcasting
+print("UDP client listening")
+
+class Packet:
+    def __init__(self, index, data):
+        self.index = index
+        self.data = data
+
+total_data = 0
+
+
+
+UDPClientSocket.sendto(bytesToSend, serverAddressPort)
 
 try:
     while True:
-        msgFromServer = UDPClientSocket.recvfrom(bufferSize)
-        received_msg = msgFromServer[0].decode()
-        sequence = int(received_msg.split(": ")[1])  # Get the number from the message
-
-        received_numbers.append(sequence)
-        print(f"Received sequence: {sequence}")
+        # serialized_packet = UDPClientSocket.recvfrom(bufferSize)
+        # packet = pickle.loads(serialized_packet)
+        message = UDPClientSocket.recvfrom(bufferSize)
+        print(f"Message: {message}" )
+        # print(f"Received: Index - {packet.index}, Data - {packet.data}")
+        
+        # total_data += packet.data
 
 except KeyboardInterrupt:
-    print("Closing client...")
+    print(f"\nTotal sum of received data: {total_data}")
 
-# Process the received numbers (calculate the sum)
-if received_numbers:
-    total_sum = sum(received_numbers)
-    print(f"Total Sum of Received Numbers: {total_sum}")
+
+# # Send to server using created UDP socket
+
+# UDPClientSocket.sendto(bytesToSend, serverAddressPort)
+
+ 
+
+# msgFromServer = UDPClientSocket.recvfrom(bufferSize)
+
+ 
+
+# msg = "Message from Server {}".format(msgFromServer[0])
+
+# print(msg)
