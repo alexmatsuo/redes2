@@ -28,7 +28,7 @@ class Packet:
         self.index = index
         self.data = data
 
-packet = Packet(index=0, data=1)
+packet = Packet(index=0, data=2)
 delay = 1
 
 while True:
@@ -37,7 +37,7 @@ while True:
         UDPServerSocket.sendto(serialized_packet, ("127.0.0.1", 8889))
         logging.info(f"Index - {packet.index}, Data - {packet.data}")
         packet.index += 1
-        packet.data += 1
+        packet.data += 2
         time.sleep(delay)
     except KeyboardInterrupt:
         logging.info("Server stopped.")
