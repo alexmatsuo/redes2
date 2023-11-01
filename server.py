@@ -25,17 +25,16 @@ if len(sys.argv) > 1:
     delay = float(sys.argv[1])
 
 while True:
-    # Serialize the packet object to bytes using pickle
-    # serialized_packet = pickle.dumps(packet)
+    try:
+        # Serialize the packet object to bytes using pickle
+        serialized_packet = pickle.dumps(packet)
+        UDPServerSocket.sendto(serialized_packet, (localIP, localPort))
 
-    # Broadcast message to all clients
-    # UDPServerSocket.sendto(serialized_packet, (localIP, localPort))
-    bytessend = bin(message)
-    UDPServerSocket.sendto(bytessend, (localIP, localPort))
-
-    print(f"Index - {packet.index}, Data - {packet.data}")
-    packet.index += 1
-    packet.data += 1
-    message += 1
-
-    time.sleep(delay)
+        print(f"Index - {packet.index}, Data - {packet.data}")
+        packet.index += 1
+        packet.data += 1
+        message += 1
+        time.sleep(delay)
+    except KeyboardInterrupt:
+        print("\n")
+        break

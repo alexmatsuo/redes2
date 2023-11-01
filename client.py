@@ -20,34 +20,14 @@ class Packet:
 
 total_data = 0
 
-
-
 UDPClientSocket.sendto(bytesToSend, serverAddressPort)
 
 try:
     while True:
-        # serialized_packet = UDPClientSocket.recvfrom(bufferSize)
-        # packet = pickle.loads(serialized_packet)
-        message = UDPClientSocket.recvfrom(bufferSize)
-        print(f"Message: {message}" )
-        # print(f"Received: Index - {packet.index}, Data - {packet.data}")
-        
-        # total_data += packet.data
+        serialized_packet = UDPClientSocket.recvfrom(bufferSize)
+        packet = pickle.loads(serialized_packet)
+        print(f"Received: Index - {packet.index}, Data - {packet.data}")
+        total_data += packet.data
 
 except KeyboardInterrupt:
-    print(f"\nTotal sum of received data: {total_data}")
-
-
-# # Send to server using created UDP socket
-
-# UDPClientSocket.sendto(bytesToSend, serverAddressPort)
-
- 
-
-# msgFromServer = UDPClientSocket.recvfrom(bufferSize)
-
- 
-
-# msg = "Message from Server {}".format(msgFromServer[0])
-
-# print(msg)
+    print(f"\nTotal sum of received data: {total_data}\n")
