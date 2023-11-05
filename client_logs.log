@@ -1,37 +1,25 @@
 UDP client listening on port: 8889
 
 Received: Index - 0, Data - 2
+Received: Index - 1, Data - 4
+Received: Index - 2, Data - 6
+Received: Index - 3, Data - 8
+Received: Index - 4, Data - 10
+Received: Index - 5, Data - 12
 UDP client listening on port: 8890
 
-Received: Index - 1, Data - 4
-Received: Index - 1, Data - 4
-Received: Index - 2, Data - 6
-Received: Index - 2, Data - 6
-Received: Index - 3, Data - 8
-Received: Index - 3, Data - 8
+Received: Index - 6, Data - 14
+Received: Index - 6, Data - 14
+Received: Index - 7, Data - 16
+Received: Index - 7, Data - 16
+Received: Index - 8, Data - 18
+Received: Index - 8, Data - 18
+Received: Index - 9, Data - 20
+Received: Index - 9, Data - 20
+Received: Index - 10, Data - 22
+Received: Index - 10, Data - 22
 UDP client listening on port: 8891
 
-Received: Index - 4, Data - 10
-Received: Index - 4, Data - 10
-Received: Index - 4, Data - 10
-Received: Index - 5, Data - 12
-Received: Index - 5, Data - 12
-Received: Index - 5, Data - 12
-Received: Index - 6, Data - 14
-Received: Index - 6, Data - 14
-Received: Index - 6, Data - 14
-Received: Index - 7, Data - 16
-Received: Index - 7, Data - 16
-Received: Index - 7, Data - 16
-Received: Index - 8, Data - 18
-Received: Index - 8, Data - 18
-Received: Index - 8, Data - 18
-Received: Index - 9, Data - 20
-Received: Index - 9, Data - 20
-Received: Index - 9, Data - 20
-Received: Index - 10, Data - 22
-Received: Index - 10, Data - 22
-Received: Index - 10, Data - 22
 Received: Index - 11, Data - 24
 Received: Index - 11, Data - 24
 Received: Index - 11, Data - 24
@@ -44,6 +32,25 @@ Received: Index - 13, Data - 28
 Received: Index - 14, Data - 30
 Received: Index - 14, Data - 30
 Received: Index - 14, Data - 30
-Total sum of received data: 220
-Total sum of received data: 238
-Total sum of received data: 240
+Received: Index - 15, Data - 32
+Received: Index - 15, Data - 32
+Received: Index - 15, Data - 32
+Received: Index - 16, Data - 34
+Received: Index - 16, Data - 34
+Received: Index - 16, Data - 34
+Received: Index - 17, Data - 36
+Received: Index - 17, Data - 36
+Received: Index - 17, Data - 36
+Total sum of received data: 186
+Total packets received: 7
+Total packets lost: 11
+Packets out of order: 0
+Total sum of received data: 286
+Total packets received: 12
+Total packets lost: 6
+Packets out of order: 0
+Received: Index - 18, Data - 38
+Total sum of received data: 380
+Total packets received: 19
+Total packets lost: 0
+Packets out of order: 0
