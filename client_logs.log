@@ -54,3 +54,163 @@ Total sum of received data: 380
 Total packets received: 19
 Total packets lost: 0
 Packets out of order: 0
+UDP client listening on port: 8889
+
+UDP client listening on port: 8890
+
+Total sum of received data: 0
+Total packets received: 0
+Total packets lost: 0
+Packets out of order: 0
+Total sum of received data: 0
+Total packets received: 0
+Total packets lost: 0
+Packets out of order: 0
+UDP client listening on port: 8889
+
+Received: Index - 0, Data - 2
+Received: Index - 1, Data - 4
+Received: Index - 2, Data - 6
+Received: Index - 3, Data - 8
+Received: Index - 4, Data - 10
+UDP client listening on port: 8890
+
+Received: Index - 5, Data - 12
+Received: Index - 5, Data - 12
+Received: Index - 6, Data - 14
+Received: Index - 6, Data - 14
+Received: Index - 7, Data - 16
+Received: Index - 7, Data - 16
+Received: Index - 8, Data - 18
+Received: Index - 8, Data - 18
+Received: Index - 9, Data - 20
+Received: Index - 9, Data - 20
+Received: Index - 10, Data - 22
+Received: Index - 10, Data - 22
+Received: Index - 11, Data - 24
+Received: Index - 11, Data - 24
+Received: Index - 12, Data - 26
+Received: Index - 12, Data - 26
+Received: Index - 13, Data - 28
+Received: Index - 13, Data - 28
+Received: Index - 14, Data - 30
+Received: Index - 14, Data - 30
+Received: Index - 15, Data - 32
+Received: Index - 15, Data - 32
+Received: Index - 16, Data - 34
+Received: Index - 16, Data - 34
+Received: Index - 17, Data - 36
+Received: Index - 17, Data - 36
+Received: Index - 18, Data - 38
+Received: Index - 18, Data - 38
+Received: Index - 19, Data - 40
+Received: Index - 19, Data - 40
+Received: Index - 20, Data - 42
+Received: Index - 20, Data - 42
+Received: Index - 21, Data - 44
+Received: Index - 21, Data - 44
+Received: Index - 22, Data - 46
+Received: Index - 22, Data - 46
+Received: Index - 23, Data - 48
+Received: Index - 23, Data - 48
+UDP client listening on port: 8891
+
+Received: Index - 24, Data - 50
+Received: Index - 24, Data - 50
+Received: Index - 24, Data - 50
+Received: Index - 25, Data - 52
+Received: Index - 25, Data - 52
+Received: Index - 25, Data - 52
+Received: Index - 26, Data - 54
+Received: Index - 26, Data - 54
+Received: Index - 26, Data - 54
+Received: Index - 27, Data - 56
+Received: Index - 27, Data - 56
+Received: Index - 27, Data - 56
+Received: Index - 28, Data - 58
+Received: Index - 28, Data - 58
+Received: Index - 28, Data - 58
+Received: Index - 29, Data - 60
+Received: Index - 29, Data - 60
+Received: Index - 29, Data - 60
+Received: Index - 30, Data - 62
+Received: Index - 30, Data - 62
+Received: Index - 30, Data - 62
+Received: Index - 31, Data - 64
+Received: Index - 31, Data - 64
+Received: Index - 31, Data - 64
+Received: Index - 32, Data - 66
+Received: Index - 32, Data - 66
+Received: Index - 32, Data - 66
+Received: Index - 33, Data - 68
+Received: Index - 33, Data - 68
+Received: Index - 33, Data - 68
+Received: Index - 34, Data - 70
+Received: Index - 34, Data - 70
+Received: Index - 34, Data - 70
+Received: Index - 35, Data - 72
+Received: Index - 35, Data - 72
+Received: Index - 35, Data - 72
+Received: Index - 36, Data - 74
+Received: Index - 36, Data - 74
+Received: Index - 36, Data - 74
+Received: Index - 37, Data - 76
+Received: Index - 37, Data - 76
+Received: Index - 37, Data - 76
+Received: Index - 38, Data - 78
+Received: Index - 38, Data - 78
+Received: Index - 38, Data - 78
+Received: Index - 39, Data - 80
+Received: Index - 39, Data - 80
+Received: Index - 39, Data - 80
+UDP client listening on port: 8892
+
+Received: Index - 40, Data - 82
+Received: Index - 40, Data - 82
+Received: Index - 40, Data - 82
+Received: Index - 40, Data - 82
+Received: Index - 41, Data - 84
+Received: Index - 41, Data - 84
+Received: Index - 41, Data - 84
+Received: Index - 41, Data - 84
+Received: Index - 42, Data - 86
+Received: Index - 42, Data - 86
+Received: Index - 42, Data - 86
+Received: Index - 42, Data - 86
+Received: Index - 43, Data - 88
+Received: Index - 43, Data - 88
+Received: Index - 43, Data - 88
+Received: Index - 43, Data - 88
+Received: Index - 44, Data - 90
+Received: Index - 44, Data - 90
+Received: Index - 44, Data - 90
+Received: Index - 44, Data - 90
+Total sum of received data: 2070
+Total packets received: 45
+Total packets lost: 0
+Packets out of order: 0
+Received: Index - 45, Data - 92
+Received: Index - 45, Data - 92
+Received: Index - 45, Data - 92
+Total sum of received data: 2120
+Total packets received: 41
+Total packets lost: 5
+Packets out of order: 0
+Received: Index - 46, Data - 94
+Received: Index - 46, Data - 94
+Received: Index - 47, Data - 96
+Received: Index - 47, Data - 96
+Received: Index - 48, Data - 98
+Received: Index - 48, Data - 98
+Received: Index - 49, Data - 100
+Received: Index - 49, Data - 100
+Received: Index - 50, Data - 102
+Received: Index - 50, Data - 102
+Total sum of received data: 2002
+Total packets received: 27
+Total packets lost: 24
+Packets out of order: 0
+Total sum of received data: 930
+Total packets received: 11
+Total packets lost: 40
+Packets out of order: 0
